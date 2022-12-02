@@ -1,7 +1,8 @@
 ## 
 
-<img src="https://i.ibb.co/dQxsSVW/pngfind-com-spring-png-535670.png" alt="pngfind-com-spring-png-535670" border="0">
-<img src="https://i.ibb.co/gF1kFqW/pngwing-com.png" alt="pngwing-com" border="0">
+<img src="https://i.ibb.co/dQxsSVW/pngfind-com-spring-png-535670.png" alt="spring-boot" border="0">
+<img src="https://i.ibb.co/gF1kFqW/pngwing-com.png" alt="react-typescript" border="0">
+
 ## 
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/hikmetkutuk/jwt-auth?color=inactive&style=for-the-badge)
