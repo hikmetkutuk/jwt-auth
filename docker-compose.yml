@@ -1,0 +1,64 @@
+version: "3.5"
+
+services:
+  ui:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      dockerfile: Dockerfile
+      context: ./ui
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - ./ui:/app
+  backend:
+    image: "jwt-auth:0.0.1"
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    container_name: jwt-auth-backend
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/jwt-auth
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRINJ_JPA_PROPERTIES_HINERNATE_JDBC_LOB_NON_CONTEXTUAL_CREATION=true
+      - SERVER_ERROR_INCLUDE_MESSAGE=always
+  db:
+    image: "postgres:13.1"
+    container_name: jwt-auth-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=jwt-auth
+    volumes:
+      - nps_data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: jwt-auth-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    depends_on:
+      - db
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
+
+volumes:
+  nps_data: {}
+  pgadmin: {}
