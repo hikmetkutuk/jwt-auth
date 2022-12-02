@@ -1,7 +1,7 @@
 package com.jwtauth.security.services;
 
-import com.login.mongodb.user.User;
-import com.login.mongodb.user.UserRepository;
+import com.jwtauth.user.User;
+import com.jwtauth.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailsServiceImpl implements UserDetailsService
 {
     private final UserRepository userRepository;
-
     public UserDetailsServiceImpl(UserRepository userRepository)
     {
         this.userRepository = userRepository;

@@ -26,19 +26,19 @@ public class UserDetailsImpl implements UserDetails
 
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String username, String email, String password,
+    public UserDetailsImpl(Long id, String username, String mail, String password,
                            Collection<? extends GrantedAuthority> authorities)
     {
         this.id = String.valueOf(id);
         this.username = username;
-        this.email = email;
+        this.email = mail;
         this.password = password;
         this.authorities = authorities;
     }
 
     public static UserDetailsImpl build(User user)
     {
-        List<GrantedAuthority> authorities = user.getRoles().stream()
+        List<GrantedAuthority> authorities = Objects.requireNonNull(user.getRoles()).stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
 

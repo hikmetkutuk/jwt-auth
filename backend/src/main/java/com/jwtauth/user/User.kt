@@ -3,6 +3,7 @@ package com.jwtauth.user
 import com.jwtauth.role.Role
 import java.util.HashSet
 import javax.persistence.*
+
 @Entity
 @Table(name = "users")
 data class User
@@ -20,6 +21,6 @@ data class User
     @Column(length = 50, nullable = false)
     val password: String,
 
-    @Enumerated(EnumType.STRING)
-    var roles: Set<Role>? = HashSet()
+    @ManyToMany(cascade = [CascadeType.ALL])
+    var roles: MutableSet<Role>? = HashSet()
 )
