@@ -9,9 +9,3 @@ server:
   error:
     include-message: always
     include-binding-errors: always
-
-login:
-  app:
-    jwtExpirationMs: '86400000'
-    jwtCookieName: login
-    jwtSecret: loginSecretKey

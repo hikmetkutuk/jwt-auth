@@ -31,13 +31,12 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-security")
-    compile("io.jsonwebtoken:jjwt:0.9.1")
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
     compile("com.fasterxml.jackson.module:jackson-module-kotlin")
     compile("org.postgresql:postgresql")
-    compile("javax.xml.bind:jaxb-api")
     testCompile("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
     }

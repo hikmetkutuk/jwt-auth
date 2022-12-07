@@ -1,4 +1,4 @@
-package com.jwtauth.role
+package com.jwt.role
 import javax.persistence.*
 
 @Entity
@@ -8,8 +8,5 @@ data class Role
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     val id: Long? = null,
-
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
-    val name: ERole
+    val name: String
 )
