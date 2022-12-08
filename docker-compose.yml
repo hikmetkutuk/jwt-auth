@@ -15,7 +15,7 @@ services:
       - /app/node_modules
       - ./ui:/app
   backend:
-    image: "jwt-auth:0.0.5"
+    image: "jwt-auth-backend:0.0.7"
     build:
       context: ./backend
     ports:
