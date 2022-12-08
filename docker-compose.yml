@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   ui:
-    image: "jwt-auth-ui:0.0.2"
+    image: "jwt-auth-ui:0.0.3"
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -15,7 +15,7 @@ services:
       - /app/node_modules
       - ./ui:/app
   backend:
-    image: "jwt-auth-backend:0.0.7"
+    image: "jwt-auth-backend:0.1.0"
     build:
       context: ./backend
     ports:
